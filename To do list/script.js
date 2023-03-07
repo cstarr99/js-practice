@@ -10,7 +10,7 @@ form.addEventListener("submit", (e) => {
   list.appendChild(item);
   itemInput.value = "";
 
-  item.addEventListener("click", (e) => {
+  item.addEventListener("click", () => {
     list.removeChild(item);
   });
 });
