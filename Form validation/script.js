@@ -1,13 +1,6 @@
 // TODO: Select all elements needed
 //    Use the HTML to figure out what classes/ids will work best for selecting each element
-const username = document.getElementById("#username");
-const password = document.getElementById("#password");
-const passConfirmation = document.getElementById("#password-confirmation");
-const terms = document.getElementById("#terms");
-const formGroup = document.querySelectorAll(".form-group");
-const submitBtn = document.querySelector(".submit");
-const errorList = document.querySelector(".error-list");
-const errors = document.querySelector(".errors");
+
 // TODO: Create an event listener for when the form is submitted and do the following inside of it.
 //    TODO: Create an array to store all error messages and clear any old error messages
 //    TODO: Define the following validation checks with appropriate error messages
@@ -16,20 +9,6 @@ const errors = document.querySelector(".errors");
 //      3. Ensure the password and confirmation password match
 //      4. Ensure the terms checkbox is checked
 //    TODO: If there are any errors then prevent the form from submitting and show the error messages
-submitBtn.addEventListener("submit", () => {
-  let arr = [];
-  const termsChecked = terms.checked;
-  if (
-    username.length < 6 ||
-    password.length < 10 ||
-    password != passConfirmation ||
-    termsChecked === false
-  ) {
-    showErrors(arr);
-    return;
-  } else {
-  }
-});
 
 // TODO: Define this function
 function clearErrors() {
