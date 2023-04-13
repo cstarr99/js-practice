@@ -7,11 +7,24 @@
 */
 const form = document.querySelector("#quiz-form");
 const answer = Array.from(document.querySelectorAll(".answer"));
+const questionItems = document.querySelectorAll(".question-item");
+const alert = document.querySelector("#alert");
 
+//add eventlistener to collect form data
 form.addEventListener("submit", (e) => {
+  //prevent page from submitting
   e.preventDefault();
+
+  //make sure all unanswered questions are marked red
+  questionItems.forEach((questionItem) => {
+    questionItem.classList.add("incorrect");
+    questionItem.classList.remove("correct");
+  });
+
+  //collects all selected answers
   const selectedAnswers = answer.filter((answer) => answer.checked);
 
+  //if selected answer is correct adds "correct" class and if incorrect adds "incorrect" class
   selectedAnswers.forEach((answer) => {
     const isCorrect = answer.value === "true";
     const questionItem = answer.closest(".question-item");
@@ -22,6 +35,18 @@ form.addEventListener("submit", (e) => {
     } else {
       questionItem.classList.add("incorrect");
       questionItem.classList.remove("correct");
+    }
+    //if every answer is correct allTrue = true, if not then it is false
+    const allTrue = selectedAnswers.every((answer) => answer.value === "true");
+    //makes sure every question is answered
+    const allAnswered = selectedAnswers.length === questionItems.length;
+
+    // if every question is answered and correct then the alert will pop up for 1 sec
+    if (allTrue && allAnswered) {
+      alert.classList.add("active");
+      setTimeout(() => {
+        alert.classList.remove("active");
+      }, 1000);
     }
   });
 });
